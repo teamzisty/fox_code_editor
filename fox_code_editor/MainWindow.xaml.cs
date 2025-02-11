@@ -52,6 +52,7 @@ namespace fox_code_editor
         private Point mousePoint;
         bool barrier1 = false;
         bool webview2_flag;
+        string folder_path;
         public MainWindow()
         {
 
@@ -62,7 +63,10 @@ namespace fox_code_editor
             startup_event_1();
             theme__s();
             teigi();
-            project_system();
+
+            o_folder_btn.Visibility = Visibility.Hidden;
+            project_name.Visibility = Visibility.Hidden;
+            dango_tools.Visibility = Visibility.Hidden;
 
 
         }
@@ -186,43 +190,77 @@ namespace fox_code_editor
         private void open_folder_click(object sender, RoutedEventArgs e)
         {
 
+            var fbd = new FolderBrowserDialog();
 
-            //[1]OpenFileDialogのオブジェクトを作成します。
-            var ofd = new Microsoft.Win32.OpenFolderDialog();
-
-            //[3]ダイアログの処理です。
-
-            if (ofd.ShowDialog() == true)
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                view1.Source = new Uri(ofd.FolderName + "/index.html", UriKind.Absolute);
-                directory.Text = ofd.FolderName + "/index.html";
+                view1.Source = new Uri(fbd.SelectedPath + "/index.html", UriKind.Absolute);
+                directory.Text = fbd.SelectedPath + "/index.html";
+
+                var files = Directory.GetFiles(fbd.SelectedPath);
+                var directories = Directory.GetDirectories(fbd.SelectedPath);
+                var items = files.Concat(directories).ToList();
+
+                files_viewer__.ItemsSource = items;
+
+                o_folder_btn.Visibility = Visibility.Visible;
+                o_folder_btn.Opacity = 1;
+                dango_tools.Visibility = Visibility.Visible;
 
                 if (File.Exists(directory.Text))
                 {
-                    //第1引数に読み込むファイルパス 第2引数に文字コードを指定
+                    folder_path = fbd.SelectedPath;
                     StreamReader strd = new StreamReader(directory.Text, Encoding.GetEncoding("UTF-8"));
-
-                    // 読み込み
                     textEditor.Text = strd.ReadToEnd();
-
-                    // close
                     strd.Close();
-
-
-
                 }
 
                 else
                 {
+                    view1.Source = new Uri("https://ku-daa.web.app/fce/st/404/", UriKind.Absolute);
                     MessageBox.Show("index.htmlが見つけれませんでした。\nファイルを編集するには、Filesから指定のファイルをダブルクリックしてください。", "エラー");
                 }
-
             }
+        
         }
 
         private void open_proj_click(object sender, RoutedEventArgs e)
         {
 
+            var fbd = new FolderBrowserDialog();
+            fbd.SelectedPath = System.AppDomain.CurrentDomain.BaseDirectory + "/project/";
+
+
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                view1.Source = new Uri(fbd.SelectedPath + "/fce_prj1/index.html", UriKind.Absolute);
+                directory.Text = fbd.SelectedPath + "/fce_prj1/index.html";
+
+                var files = Directory.GetFiles(fbd.SelectedPath + "/fce_prj1/");
+                var directories = Directory.GetDirectories(fbd.SelectedPath + "/fce_prj1/");
+                var items = files.Concat(directories).ToList();
+
+                files_viewer__.ItemsSource = items;
+
+                o_folder_btn.Visibility = Visibility.Visible;
+                o_folder_btn.Opacity = 1;
+                dango_tools.Visibility = Visibility.Visible;
+
+
+
+                if (File.Exists(directory.Text))
+                {
+                    folder_path = $"{fbd.SelectedPath}\\fce_prj1\\"; 
+                    StreamReader strd = new StreamReader(directory.Text, Encoding.GetEncoding("UTF-8"));
+                    textEditor.Text = strd.ReadToEnd();
+                    strd.Close();
+                }
+                else
+                {
+                    view1.Source = new Uri("https://ku-daa.web.app/fce/st/404/", UriKind.Absolute);
+                    MessageBox.Show("index.htmlが見つけれませんでした。\nファイルを編集するには、Filesから指定のファイルをダブルクリックしてください。", "エラー");
+                }
+            }
         }
 
         private void save_in(object sender, RoutedEventArgs e)
@@ -751,32 +789,9 @@ namespace fox_code_editor
 
         private void o_folder(object sender, RoutedEventArgs e)
         {
-            string fileContents;
-
-            try
-            {
-                using (StreamReader sr = new StreamReader("pkg_data.udapp"))
-                {
-                    fileContents = sr.ReadLine();
-
-                }
-
-                string trim_path = fileContents.Replace("<this_pack_path> ", "");
-                string this_path = trim_path;
-
-
-                Process.Start("explorer.exe", this_path);
-
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-
             
-
+            System.Diagnostics.Process.Start("explorer.exe", folder_path);
+            
         }
 
         private void project_name_TextChanged(object sender, TextChangedEventArgs e)
@@ -844,45 +859,6 @@ namespace fox_code_editor
             }
         }
 
-        private void project_system()
-        {
-            string fileContents;
-
-            try
-            {
-                using (StreamReader sr = new StreamReader("pkg_data.udapp"))
-                {
-                    fileContents = sr.ReadLine();
-
-                }
-
-                string trim_path = fileContents.Replace("<this_pack_path> ", "");
-                string this_path = trim_path;
-
-
-                // ファイル一覧を取得
-                var files = Directory.GetFiles(this_path);
-
-                // フォルダ一覧を取得
-                var directories = Directory.GetDirectories(this_path);
-
-                // ファイルとフォルダを結合
-                var items = files.Concat(directories).ToList();
-
-                // ListViewのItemsSourceに設定
-                files_viewer__.ItemsSource = items;
- }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-
-           
-
-
-        }
 
         private void file_open__(object sender, MouseButtonEventArgs e)
         {
