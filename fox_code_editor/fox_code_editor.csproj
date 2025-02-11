@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>fce_favicon.ico</ApplicationIcon>
+    <UseWindowsForms>False</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="back.png" />
+    <None Remove="dango_tool_img\file.png" />
+    <None Remove="dango_tool_img\ud.jpg" />
+    <None Remove="dango_tool_img\ud_kadomaru.png" />
+    <None Remove="dango_tool_img\ud_mini.png" />
+    <None Remove="dango_tool_img\ud_mini__.png" />
+    <None Remove="fce_3_2_splash.jpg" />
+    <None Remove="fce_favicon.png" />
+    <None Remove="fce_logo_128x128.png" />
+    <None Remove="gr.png" />
+    <None Remove="icon_loader_d_gw_01_s1.gif" />
+    <None Remove="packages\img\pkg_01.png" />
+    <None Remove="reload.png" />
+    <None Remove="u__img\fce.png" />
+    <None Remove="u__img\zisty_header.png" />
+    <None Remove="スプリッター.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="settingsvgrepocom.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="fce_favicon.ico" />
+    <content Include="settingsvgrepocom.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+    <PackageReference Include="FluentAssertions" Version="8.0.0" />
+    <PackageReference Include="Forge.OpenAI" Version="1.5.6" />
+    <PackageReference Include="ICSharpCode.TextEditor" Version="3.2.1.6466" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.10" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2957.106" />
+    <PackageReference Include="Microsoft.Web.WebView2.DevToolsProtocolExtension" Version="1.0.2901" />
+    <PackageReference Include="OpenAI" Version="2.1.0" />
+    <PackageReference Include="OpenAI-DotNet" Version="8.5.3" />
+    <PackageReference Include="OpenAI.ChatGPT" Version="4.1.0" />
+    <PackageReference Include="SharpVectors" Version="1.8.4.2" />
+    <PackageReference Include="SharpVectors.Wpf" Version="1.8.4.2" />
+    <PackageReference Include="WebView2.Runtime.X64" Version="132.0.2957.140" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="back.png" />
+    <resource Include="dango_tool_img\file.png" />
+    <Resource Include="dango_tool_img\ud.jpg" />
+    <Resource Include="dango_tool_img\ud_kadomaru.png" />
+    <Resource Include="dango_tool_img\ud_mini.png" />
+    <Resource Include="fce_3_2_splash.jpg" />
+    <Resource Include="fce_favicon.png" />
+    <Resource Include="fce_logo_128x128.png" />
+    <Resource Include="gr.png" />
+    <Resource Include="icon_loader_d_gw_01_s1.gif" />
+    <Resource Include="packages\img\pkg_01.png" />
+    <Resource Include="reload.png" />
+    <Resource Include="u__img\fce.png" />
+    <Resource Include="u__img\zisty_header.png" />
+    <Resource Include="スプリッター.png" />
+  </ItemGroup>
+
+</Project>
