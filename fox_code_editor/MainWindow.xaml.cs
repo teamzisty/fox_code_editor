@@ -586,8 +586,8 @@ namespace fox_code_editor
                 {
                     dark = false;
                     window_main.Background = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-
-
+                    file.Foreground = new SolidColorBrush(Colors.Black);
+                    help.Foreground = new SolidColorBrush(Colors.Black);
                 }
 
 

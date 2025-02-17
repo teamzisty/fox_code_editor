@@ -8,18 +8,15 @@
         x:Class="fox_code_editor.ver"
         mc:Ignorable="d" Height="561" Width="895" ResizeMode="NoResize" Icon="/fce_logo_128x128.png">
     <Grid>
-        <Border Margin="91,65,0,0" CornerRadius="20, 0, 0, 0" Background="#A5E4F6FF">
-            <Image Source="/u__img/zisty_header.png" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="642,399,0,0"/>
-        </Border>
+        <Border Margin="91,65,0,0" CornerRadius="20, 0, 0, 0" Background="#A5E4F6FF"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="356,90,0,0" FontSize="24" Width="284" Height="34"><Run Text="Fox Code Editor"/><Run Text=" Beta 3"/><Run Language="ja-jp" Text=".2"/><LineBreak/><Run Language="ja-jp"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="128,471,0,0" FontSize="20" Width="156"><Run Language="ja-jp" Text="©2025 - Zisty"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="128,471,0,0" FontSize="20" Width="196"><Run Text="©2025 - "/><Run Language="ja-jp" Text="うまいだんご"/></TextBlock>
 
         <Grid>
 
             <Wpf:WebView2 x:Name="upadate_info" Source="https://usoftware-gr.github.io/software/update_info/fce-bate-3-2.html" Margin="130,117,38,85"></Wpf:WebView2>
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="25,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="125" FontSize="28" FontFamily="Calibri"><Run Language="ja-jp" Text="V"/><Run Text="ersion"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="784,461,0,0" FontSize="32" Width="156"><Run Language="ja-jp" Text="Zisty"/></TextBlock>
 
     </Grid>
 </Window>

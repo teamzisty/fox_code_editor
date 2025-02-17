@@ -26,21 +26,10 @@ namespace fox_code_editor
         {
             InitializeComponent();
             Topmost = true;
-            splash_timer.Start();
-            splash_timer.Interval = 1000;
-            splash_timer.Tick += new EventHandler(splash_close);
-
-
-
-        }
-
-        public void splash_close(object sender, EventArgs e)
-        {
-            
-            splash_timer.Stop();
-            splash.Visibility = Visibility.Hidden;
             webview.Visibility = Visibility.Visible;
-            rect.Visibility = Visibility.Hidden;
+
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
